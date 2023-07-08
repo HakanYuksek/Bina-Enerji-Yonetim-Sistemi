@@ -1,0 +1,125 @@
+{% extends "index.html" %}
+
+<!-- external js ve css dosyalari include etmek icin -->
+{% block includes %}
+
+{% endblock %}
+
+
+<!-- Ortadaki degisen alan icin HTML kodlar -->
+{% block content %}
+
+<div class="container-fluid">
+
+	<h3 class="mt-4">Lütfen Yük Tüketimini Görüntülemek İstediğiniz Kullanıcıyı Seçiniz</h3>					
+	<div class="fluid text-center" style="height:50%;background-color:#ced3db;">
+	<br>
+	<form action="/showLoads" method="post">
+	<div class="form-group row">
+	<h4 class="ml-4">Kullanıcı :</h4>
+		<select class="form-control ml-4" style="width:50%;" name="sel1" id="sel1">
+		{%if userID == 1 %}
+				<option selected>Daire-1</option>
+				<option>Daire-2</option>
+				<option>Diğer Daireler</option>
+		{% elif userID == 2 %}
+				<option>Daire-1</option>
+				<option selected>Daire-2</option>
+				<option>Diğer Daireler</option>
+		{%elif userID == 3%}
+				<option >Daire-1</option>
+				<option>Daire-2</option>
+				<option selected>Diğer Daireler</option>
+		{%else%}
+				<option selected>Daire-1</option>
+				<option>Daire-2</option>
+				<option>Diğer Daireler</option>
+		{%endif%}
+		</select>	
+	</div>
+	<div class="form-group row">
+		<h4 class="ml-4">Gün &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :</h4>
+		<select class="form-control ml-4" style="width:50%;" name="sel2" id="sel2">
+		{%if day == 1 %}
+				<option selected>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{% elif day == 2 %}
+				<option>Pazartesi</option>
+				<option selected>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{%elif day == 3%}
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option selected>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{%elif day == 4%}
+		
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option selected>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		
+		{%elif day == 5%}
+		
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option selected>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		
+		{%elif day == 6%}
+		
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option selected>Cumartesi</option>
+				<option>Pazar</option>
+		{%elif day == 7%}
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option selected>Pazar</option>
+		{%else%}
+				<option selected>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{%endif%}
+		</select>	
+		<button type="submit" class="btn btn-primary mb-2 ml-2" style="">Yük Tüketimlerini Göster</button>
+	</div>
+	</form>
+	<br>
+	
+	</div>
+
+
+
+</div>
+
+{% endblock %}

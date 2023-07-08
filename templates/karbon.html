@@ -1,0 +1,56 @@
+{% extends "index.html" %}
+
+<!-- external js ve css dosyalari include etmek icin -->
+{% block includes %}
+
+{% endblock %}
+
+
+<!-- Ortadaki degisen alan icin HTML kodlar -->
+{% block content %}
+
+
+
+<div class="container-fluid">
+    <div class="card mt-4">
+        <div class="card-header bg-primary text-white"><h5>Karbon Ayak İzi Hesaplama Ekranı</h5></div>
+        <div class="card-body">
+            <form action="/result" class="needs-validation" method="POST" novalidate>
+              <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label"><strong><h5>Evdeki Kişi Sayısı:</h5></strong></label>
+                <div class="col-sm-10">
+                    <input type="number" min="0" class="form-control" id="title" placeholder="Kişi Sayısını Giriniz..." name="kisiSayisi" required>
+                    <div class="valid-feedback">Geçerli.</div>
+                    <div class="invalid-feedback">Lütfen Bu Alanı Doldurunuz.</div>
+                </div>
+               
+              </div>
+			  
+			  <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label"><strong><h5>Elektrik Tüketimi:</h5></strong></label>
+                <div class="col-sm-10">
+                    <input type="number" min="0" class="form-control" id="title" placeholder="Tüketim Miktarını kWh Cinsinden Giriniz..." name="ElektrikTuketimi" required>
+                    <div class="valid-feedback">Geçerli.</div>
+                    <div class="invalid-feedback">Lütfen Bu Alanı Doldurunuz.</div>
+                </div>
+        
+              </div>
+
+        <div class="form-group row">
+                <label for="title" class="col-sm-2 col-form-label"><strong><h5>Doğalgaz Tüketimi:</h5></strong></label>
+                <div class="col-sm-10">
+                    <input type="number" min="0" class="form-control" id="title" placeholder="Tüketim Miktarını Metre Küp Olarak Giriniz..." name="DogalgazTuketimi" required>
+                    <div class="valid-feedback">Geçerli.</div>
+                    <div class="invalid-feedback">Lütfen Bu Alanı Doldurunuz.</div>
+                </div>
+        </div>
+
+              <button type="submit" class="btn btn-primary float-right">Hesapla</button>
+            </form>           
+        </div> 
+      </div>
+</div>
+
+    
+
+{% endblock %}

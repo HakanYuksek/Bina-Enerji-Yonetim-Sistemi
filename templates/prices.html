@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+<!-- external js ve css dosyalari include etmek icin -->
+{% block includes %}
+
+{% endblock %}
+
+
+<!-- Ortadaki degisen alan icin HTML kodlar -->
+{% block content %}
+
+<div class="container-fluid">
+
+	<h3 class="mt-4">Kullanıcıların Tükettikleri Enerjiler ve Fatura Bilgileri</h3>					
+	<div class="fluid text-center" style="height:50%;background-color:#ced3db;">
+	<br>
+	{%for key,val,price in zip(sums.keys(),sums.values(),prices)%}
+		<div class="form-group row">
+			<h4 class="ml-4">Daire-{{key}}:</h4>
+			<div class="ml-4 mr-4" style="background-color:white;width:100%;height:10%;">
+				<p>&nbsp;Tükettiği Enerji:{{val}} KiloWatt&nbsp;&nbsp;-&nbsp;&nbsp;Ödemesi Gereken Fatura:{{price}} TL</p>  
+			</div>
+		</div>
+		<br>
+	{%endfor%}
+	</div>
+
+
+
+</div>
+
+
+{% endblock %}

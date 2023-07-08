@@ -1,0 +1,19 @@
+<table id="dtHorizontalExample" class="table table-bordered table-sm table-hover">
+		<tr>
+			<th> Güncelle </th>
+			<th> Umarim</th>
+			<th> Calisir</th>
+		</tr>
+		{% for row,index in zip(row_data,range(24)) %}
+		<tr>     
+			<td>
+				<button id={{index}}  name="person_id" class="btn btn-primary deneme" style="color:white;">
+					Güncelle
+				</button>
+			</td>
+			<td>Hadi</td>
+			<td>Calis</td>
+		</tr>
+		{% endfor %}
+
+</table>

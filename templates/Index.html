@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+
+<html>
+
+	<head>
+		<title>Bina Enerji Yönetim Sistemi</title>
+		<meta charset="UTF-8">
+				
+		<link rel="stylesheet" href="/static/css/bootstrap.min.css">
+	    <script src="/static/js/jquery.min.js"></script>
+		<script src="/static/js/popper.min.js"></script>
+		<script src="/static/js/bootstrap.min.js"></script>
+		
+		<script>
+			function showWarning(){
+				window.alert("Yanlış Kullanıcı Adı veya Şifre Girdiniz...");
+			}
+		</script>
+	
+		
+		<!-- external js ve css dosyalari include etmek icin -->
+		{% block includes %}
+			
+		{% endblock %}
+
+	</head>
+	{%if username == "WrongUser" %}
+		<body onload="showWarning();">
+	{%else%}
+		<body>
+	{%endif%}
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		  <a class="navbar-brand" href="/">Bina Enerji Yönetim Sistemi</a>
+		  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb">
+			<span class="navbar-toggler-icon"></span>
+		  </button>
+		  <div class="collapse navbar-collapse" id="navb">
+			<ul class="navbar-nav mr-auto">
+			  <li class="nav-item">
+				<a class="nav-link" href="/calculateCarbon">Karbon Ayak İzi Hesapla</a>
+			  </li>
+			  {%if username != "not" and username != "WrongUser" %}
+			   <li class="nav-item">
+					<a class="nav-link" href="/loadConsumes">Kullanıcı Yük Tüketimleri</a>
+			   </li>
+			   <li class="nav-item">
+					<a class="nav-link" href="/prices">Fiyatlandırmalar</a>
+			   </li>
+			  {%endif%}	  
+			</ul>
+			{%if username == "not" or username == "WrongUser" %}
+				<form class="form-inline my-2 my-lg-0" action="/login"  method="Post">
+				  <input class="form-control mr-sm-2" type="text" placeholder="Kullanıcı Adınız..." name ="username">
+				  <input class="form-control mr-sm-2" type="password" placeholder="Şifreniz..." name="password">
+				  <button class="btn btn-success my-2 my-sm-0" type="submit">Giriş Yap</button>
+				</form>
+			{%else%}
+				<button class="btn btn-primary my-2 my-sm-0" type="button">{{username}}</button>
+				<a href="/logout"><button class="btn btn-danger my-2 my-sm-0 ml-2" type="button">Çıkış Yap</button></a>
+			{%endif%}	  
+		  </div>
+		</nav>
+
+
+	{% block content %}
+			<!-- Page Content -->
+	<div id="content">
+
+
+		<div class="container-fluid mt-4">
+			<h3>Akıllı ve Çevre Dostu Bina Enerji Yönetim Sistemi</h3>					
+			<div class="row jumbotron jumbotron-fluid">
+				<div class="col-sm-4 ml-4">
+					<br>
+					<h4>Bu sistemin amacı nedir?</h4>
+					<p>
+					Bu sistemde bir binanın enerji ihtiyacının hem yenilenebilir enerji kaynağından hem de şebekeden sağlanması amaçlanmaktadır.
+					Bu işlemin sağlıklı bir şekilde gerçekleştirilebilmesi için kullanıcılar arasında adil bir fiyatlandırmanın gerçekleştirilmesi
+					gerekmektedir. Bu fiyatlandırma takibinin yapılması da bu uygulama üzerinden gerçekleştirilecektir.  
+					</p>
+					
+					<h4>Bu sistemde neler yapabilirsiniz?</h4>
+					<ul>
+						<li>Enerjiden tasarruf edebilirsiniz.</li>
+						<li>Karbon ayak izini hesaplayabilirsiniz.</li>
+						<li>Enerji fiyatlandırmalarını gözlemleyebilirsiniz.</li>
+					</ul>
+					<br>
+				</div>
+				<img class="ml-4" src="/static/5.jpeg"/>
+			</div>
+		</div>
+		
+	</div>
+				
+	{% endblock %}
+		
+	</body>
+
+
+</html>

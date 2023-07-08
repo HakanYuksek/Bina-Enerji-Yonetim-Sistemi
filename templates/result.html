@@ -1,0 +1,54 @@
+
+{% extends "index.html" %}
+
+<!-- external js ve css dosyalari include etmek icin -->
+{% block includes %}
+
+{% endblock %}
+
+{% block content %}
+
+<br>
+<br>
+<br>
+<div class="container" >
+
+  <h5>Girdiğiniz Değerler</h5>            
+  <table class="table table-bordered" style="background-color:rgb(240, 240, 240)">
+    <thead>
+      <tr>
+        <th>Kişi Sayısı</th>
+        <th>Elektrik Tüketimi</th>
+        <th>Doğalgaz Tüketimi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ x }} </td>
+        <td>{{ y }} kWh</td>
+        <td>{{ z }} Metre Küp</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="container">
+<h5>Hesaplanan Değerler</h5>
+<table class="table table-bordered" style="background-color:rgb(240, 240, 240)">
+    <thead>
+      <tr>
+        <th>Toplam Emisyon Miktarı</th>
+        <th>Kişi Başı Emisyon Miktarı</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ sum_result  }}</td>
+        <td>{{ kisi_basi }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+{% endblock %}

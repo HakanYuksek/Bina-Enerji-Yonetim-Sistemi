@@ -1,0 +1,20 @@
+
+HTTP GET kullanılarak Internet e bağlı ESP8266 dan aşağıdaki URL formatında veri ilgili WEB sitesine
+gönderilir, ardından Web sitesi verilen parametreleri veri tabanında günceller
+
+http://mywebapps.pythonanywhere.com/updateFromCircuit?userID=1&day=1&hour=1&yuku kullanan elektronik alet1 = tükettiği yük miktarı&yuku kullanan elektronik alet2 = tükettiği yük miktarı;
+
+userID | day  | hour | Aydınlatma  | Sac_kurutucu | Buzdolabi | kettle | Tost_makinesi | kahve_makinesi | firin | camasir_makinesi | bulasik_makinesi | 
+camasir_kurutma | Elektrik_makinasi | firin1 | Modem | TV   | Klima | Elektrikli_Arac_Sarzi | Toplam | olcekli |
+
+Örnek olarak -------------->
+----------------------------------------------------------------------------------------
+
+http://mywebapps.pythonanywhere.com/getData?userID=1&day=1&hour=1&Toplam=1000
+
+Şeklindeki URL HTTP GET ile gönderilirse, Verilen parametredeki değerler Database e kaydedilecek, ardından kullanıcı yük tüketimlerini göster dediğinde
+veriler database den çekildiği için kullanıcı yük tüketimlerini görüntüleyebilecek..
+
+
+Veya local de çalışan uygulamayla aynı ağa bağlanıp verileri local deki pc nin ağına bağlanıp gönderme yapılabilir
+

@@ -1,0 +1,204 @@
+{% extends "index.html" %}
+
+<!-- external js ve css dosyalari include etmek icin -->
+{% block includes %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	$(document).ready(function () {
+		$(".deneme").click(function(){
+			var hour = $(this).get(0).id;
+			url = "/updateLoads?userID="+{{userID}}+"&day="+{{day}}+"&hour="+hour;
+			window.location.href = url;
+			//var link="/Grades/NotuSistemeEkle?sno="+sno+"&grade="+grade;
+			//window.location.href=link;
+		});
+		changeImage();
+
+	});
+
+	function changeImage() {
+
+			
+		  setInterval(function(){ 
+				var figName =   $('#img').prop('src')+Math.random();
+				$("#img").attr("src",figName);
+						var url = '/webservice?userID='+{{userID}}+"&day="+{{day}}
+		$.getJSON(url, 
+			function(data, textStatus, jqXHR) {
+				var hour = data['hour'];
+
+				var Toplam = data['Toplam'];
+				var olcekli = data['olcekli'];
+				$('#dtHorizontalExample tr:eq('+hour+') td:eq(17)').text(Toplam);
+				$('#dtHorizontalExample tr:eq('+hour+') td:eq(18)').text(olcekli);
+
+			}
+			);	
+		  }, 3000);
+	}
+
+	 function codeAddress() {
+			window.scrollTo(0,300);
+      }
+    window.onload = codeAddress;
+</script>
+
+
+
+{% endblock %}
+
+
+<!-- Ortadaki degisen alan icin HTML kodlar -->
+{% block content %}
+
+<div class="container-fluid" onload="scrollDown();">
+
+	<h3 class="mt-4">Lütfen Yük Tüketimini Görüntülemek İstediğiniz Kullanıcıyı Seçiniz</h3>					
+	<div class="fluid text-center" style="height:50%;background-color:#ced3db;">
+	<br>
+	<form action="/showLoads" method="post">
+	<div class="form-group row">
+	<h4 class="ml-4">Kullanıcı :</h4>
+		<select class="form-control ml-4" style="width:50%;" name="sel1" id="sel1">
+		{%if userID == 1 %}
+				<option selected>Daire-1</option>
+				<option>Daire-2</option>
+				<option>Diğer Daireler</option>
+		{% elif userID == 2 %}
+				<option>Daire-1</option>
+				<option selected>Daire-2</option>
+				<option>Diğer Daireler</option>
+		{%elif userID == 3%}
+				<option >Daire-1</option>
+				<option>Daire-2</option>
+				<option selected>Diğer Daireler</option>
+		{%else%}
+				<option selected>Daire-1</option>
+				<option>Daire-2</option>
+				<option>Diğer Daireler</option>
+		{%endif%}
+		</select>	
+	</div>
+	<div class="form-group row">
+		<h4 class="ml-4">Gün &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  :</h4>
+		<select class="form-control ml-4" style="width:50%;" name="sel2" id="sel2">
+		{%if day == 1 %}
+				<option selected>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{% elif day == 2 %}
+				<option>Pazartesi</option>
+				<option selected>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{%elif day == 3%}
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option selected>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{%elif day == 4%}
+		
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option selected>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		
+		{%elif day == 5%}
+		
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option selected>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		
+		{%elif day == 6%}
+		
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option selected>Cumartesi</option>
+				<option>Pazar</option>
+		{%elif day == 7%}
+				<option>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option selected>Pazar</option>
+		{%else%}
+				<option selected>Pazartesi</option>
+				<option>Sali</option>
+				<option>Carsamba</option>
+				<option>Persembe</option>
+				<option>Cuma</option>
+				<option>Cumartesi</option>
+				<option>Pazar</option>
+		{%endif%}
+		</select>	
+		<button type="submit" class="btn btn-primary mb-2 ml-2" style="">Yük Tüketimlerini Göster</button>
+	</div>
+	</form>
+	<br>
+	</div>
+	
+	<div class="text-center">
+		<img id ="img" src={{figName}}/>
+	</div>
+
+	<details>
+		
+		<summary><h4 class="text-center">Tablonun Tamamını Görmek İçin Tıklayınız</h4></summary>
+	  <div class="table-responsive">
+		<table id="dtHorizontalExample" class="table table-bordered table-sm table-hover">
+		<tr>
+			<th> Güncelle </th>
+			{% for col in column_names %}
+				{%if col != "day" and col!="userID"%}
+				<th>{{col}}</th>
+				{%endif%}
+			{% endfor %}
+		</tr>
+		{% for row,index in zip(row_data,range(24)) %}
+		<tr>     
+			<td>
+				<button id={{index}}  name="person_id" class="btn btn-primary deneme" style="color:white;">
+					Güncelle
+				</button>
+			</td>
+			{% for col, row_ in zip(column_names, row) %}
+				{% if col != "day"  and col!="userID"%}
+					<td>{{row_}}</td>
+				{% endif %}
+			{% endfor %}
+		</tr>
+		{% endfor %}
+
+		</table>
+	  </div>
+	  
+  </details>
+
+</div>
+	<br>
+
+</div>
+
+{% endblock %}
